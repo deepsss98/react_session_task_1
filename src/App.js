@@ -9,7 +9,7 @@ function App() {
       storage: "5GB Storage",
       pvt_prjct_class: { li_Class: "text-muted", i_class: "fas fa-times" },
       phne_support_class: { li_Class: "text-muted", i_class: "fas fa-times" },
-      domain_class: { highlight_txt: "",txt:"Free Subdomain",li_Class: "text-muted", i_class: "fas fa-times"},
+      domain_class: { highlight: true,li_Class: "text-muted", i_class: "fas fa-times"},
       reports_class: { li_Class: "text-muted", i_class: "fas fa-times" },
     },
     {
@@ -19,7 +19,7 @@ function App() {
       storage: "50GB Storage",
       pvt_prjct_class: { li_Class: "", i_class: "fas fa-check" },
       phne_support_class: { li_Class: "", i_class: "fas fa-check" },
-      domain_class: {highlight_txt: "",txt:"Free Subdomain",li_Class: "",i_class: "fas fa-check"},
+      domain_class: {highlight: true,li_Class: "",i_class: "fas fa-check"},
       reports_class: { li_Class: "text-muted", i_class: "fas fa-times" },
     },
     {
@@ -29,7 +29,7 @@ function App() {
       storage: "150GB Storage",
       pvt_prjct_class: { li_Class: "", i_class: "fas fa-check" },
       phne_support_class: { li_Class: "", i_class: "fas fa-check" },
-      domain_class: {highlight_txt: "Unlimited ",txt:"Free Subdomains",li_Class: "",i_class: "fas fa-check"},
+      domain_class: {highlight: false ,li_Class: "",i_class: "fas fa-check"},
       reports_class: { li_Class: "", i_class: "fas fa-check" },
     },
   ];
@@ -72,10 +72,11 @@ export function Card({ data }) {
               <span className="fa-li"><i className={data.phne_support_class.i_class}></i></span>
               Dedicated Phone Support
             </li>
-            <li className={data.domain_class.li_Class}>
+            {data.domain_class.highlight ? (<li className={data.domain_class.li_Class}>
               <span className="fa-li"><i className={data.domain_class.i_class}></i></span>
-              <strong>{data.domain_class.highlight_txt}</strong>{data.domain_class.txt}
-            </li>
+              Free Subdomain</li>) : (<li className={data.domain_class.li_Class}>
+              <span className="fa-li"><i className={data.domain_class.i_class}></i></span>
+              <strong>Unlimited </strong>Free Subdomains </li>)}
             <li className={data.reports_class.li_Class}>
               <span className="fa-li"><i className={data.reports_class.i_class}></i></span>
               Monthly Status Reports
